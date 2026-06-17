@@ -1,0 +1,109 @@
+{
+  "faqs": [
+    {
+      "id": "1",
+      "question": "Comment réinitialiser mon mot de passe ?",
+      "answer": "Cliquez sur \"Mot de passe oublié\" sur l'écran de connexion. Vous recevrez un lien par email pour créer un nouveau mot de passe. Le lien expire après 30 minutes.",
+      "keywords": ["mot de passe", "réinitialiser", "oublié", "connexion", "email"],
+      "category": "authentification"
+    },
+    {
+      "id": "2",
+      "question": "Comment ajouter un produit ?",
+      "answer": "Allez dans l'onglet \"Produits\", puis cliquez sur \"Ajouter un produit\". Remplissez tous les champs obligatoires et cliquez sur \"Enregistrer\".",
+      "keywords": ["produit", "ajouter", "créer", "enregistrer", "onglet"],
+      "category": "gestion"
+    },
+    {
+      "id": "3",
+      "question": "Je ne reçois pas les notifications",
+      "answer": "Vérifiez que vous avez autorisé les notifications dans les paramètres de votre appareil et dans l'application. Assurez-vous également que le mode \"Ne pas déranger\" est désactivé.",
+      "keywords": ["notifications", "paramètres", "autoriser", "appareil", "application"],
+      "category": "technique"
+    },
+    {
+      "id": "4",
+      "question": "Comment contacter le support ?",
+      "answer": "Envoyez un email à support@monapp.com ou cliquez sur le bouton \"Support\" en bas de l'écran d'accueil. Notre équipe répond sous 24 heures ouvrées.",
+      "keywords": ["support", "contact", "email", "aide", "assistance"],
+      "category": "support"
+    },
+    {
+      "id": "5",
+      "question": "Comment modifier mes informations de profil ?",
+      "answer": "Rendez-vous dans \"Mon compte\" puis \"Profil\". Modifiez les champs souhaités et cliquez sur \"Enregistrer les modifications\". Certains changements comme l'email demandent une confirmation.",
+      "keywords": ["profil", "compte", "modifier", "informations", "paramètres"],
+      "category": "compte"
+    },
+    {
+      "id": "6",
+      "question": "Quels moyens de paiement acceptez-vous ?",
+      "answer": "Nous acceptons les cartes Visa et Mastercard, ainsi que le paiement mobile (Mobile Money) et le virement bancaire pour les abonnements annuels.",
+      "keywords": ["paiement", "carte", "mobile money", "virement", "visa", "mastercard"],
+      "category": "facturation"
+    },
+    {
+      "id": "7",
+      "question": "Comment télécharger ma facture ?",
+      "answer": "Dans \"Mon compte\" > \"Facturation\", chaque paiement dispose d'un bouton \"Télécharger la facture\" au format PDF. Les factures restent disponibles pendant 5 ans.",
+      "keywords": ["facture", "télécharger", "pdf", "facturation", "paiement"],
+      "category": "facturation"
+    },
+    {
+      "id": "8",
+      "question": "Comment annuler mon abonnement ?",
+      "answer": "Allez dans \"Mon compte\" > \"Abonnement\" puis cliquez sur \"Annuler l'abonnement\". L'accès reste actif jusqu'à la fin de la période déjà payée, sans renouvellement automatique.",
+      "keywords": ["abonnement", "annuler", "résilier", "renouvellement", "compte"],
+      "category": "facturation"
+    },
+    {
+      "id": "9",
+      "question": "Comment suivre l'état de ma commande ?",
+      "answer": "Dans l'onglet \"Commandes\", sélectionnez la commande concernée pour voir son statut en temps réel : confirmée, préparée, expédiée ou livrée, avec le numéro de suivi.",
+      "keywords": ["commande", "suivi", "statut", "livraison", "expédition"],
+      "category": "commandes"
+    },
+    {
+      "id": "10",
+      "question": "Mon application est lente ou se bloque",
+      "answer": "Fermez puis rouvrez l'application, vérifiez votre connexion internet et installez la dernière mise à jour. Si le problème persiste, videz le cache dans les paramètres ou réinstallez l'application.",
+      "keywords": ["lent", "bloque", "performance", "bug", "mise à jour", "cache"],
+      "category": "technique"
+    },
+    {
+      "id": "11",
+      "question": "Comment activer l'authentification à deux facteurs ?",
+      "answer": "Dans \"Mon compte\" > \"Sécurité\", activez \"Authentification à deux facteurs (2FA)\". Vous pourrez utiliser une application d'authentification ou recevoir un code par SMS.",
+      "keywords": ["2fa", "double authentification", "sécurité", "code", "sms"],
+      "category": "authentification"
+    },
+    {
+      "id": "12",
+      "question": "Comment supprimer définitivement mon compte ?",
+      "answer": "Dans \"Mon compte\" > \"Confidentialité\", choisissez \"Supprimer mon compte\". Cette action est irréversible et efface vos données sous 30 jours, conformément à notre politique de confidentialité.",
+      "keywords": ["supprimer", "compte", "données", "confidentialité", "rgpd"],
+      "category": "compte"
+    },
+    {
+      "id": "13",
+      "question": "Puis-je utiliser l'application hors ligne ?",
+      "answer": "Certaines fonctionnalités comme la consultation de vos données déjà chargées sont disponibles hors ligne. La synchronisation reprend automatiquement dès que la connexion est rétablie.",
+      "keywords": ["hors ligne", "offline", "connexion", "synchronisation"],
+      "category": "technique"
+    },
+    {
+      "id": "14",
+      "question": "Comment exporter mes données ?",
+      "answer": "Dans \"Mon compte\" > \"Confidentialité\" > \"Exporter mes données\", vous pouvez télécharger une archive de toutes vos données au format CSV ou JSON.",
+      "keywords": ["exporter", "données", "csv", "json", "archive", "rgpd"],
+      "category": "compte"
+    },
+    {
+      "id": "15",
+      "question": "Quels sont les délais de livraison ?",
+      "answer": "Les délais varient selon votre zone : 1 à 3 jours ouvrés en zone urbaine et 3 à 7 jours en zone périphérique. Le délai estimé s'affiche au moment de la commande.",
+      "keywords": ["livraison", "délai", "expédition", "commande", "zone"],
+      "category": "commandes"
+    }
+  ]
+}

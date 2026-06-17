@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SupportAI — RAG Customer-Support Chatbot
 
-## Getting Started
+An intelligent customer-support chatbot built with **Retrieval-Augmented Generation (RAG)**. It answers questions in French, grounded strictly in a knowledge base — so it never invents answers — and cites the sources it used, with a confidence score derived from retrieval similarity.
 
-First, run the development server:
+Built with **Next.js 15 (App Router)** and **Google Gemini** (accessed through the OpenAI-compatible SDK).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> ℹ️ Demo project. The knowledge base (`src/data/knowledge-base.json`) ships with 15 sample SaaS FAQs; swap in your own to adapt it to any product.
+
+## How it works
+
+```
+user question
+   │
+   ▼
+embed query (text-embedding-004)
+   │
+   ▼
+cosine-similarity search over the knowledge base   ← in-memory vector store
+   │
+   ▼
+top-K relevant FAQs (above similarity threshold)
+   │
+   ▼
+grounded prompt + context → Gemini (gemini-2.0-flash)
+   │
+   ▼
+answer + sources + confidence
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The system prompt instructs the model to answer **only** from the retrieved context and to point users to human support when the knowledge base has no match — the core anti-hallucination guarantee of RAG.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Semantic retrieval** — cosine similarity over Gemini embeddings, not keyword matching.
+- **Grounded generation** — answers constrained to retrieved context, with `[n]` source citations.
+- **Confidence scoring** — `high` / `medium` / `low` from average retrieval similarity.
+- **Optional reasoning mode** — routes hard questions to a reasoning model (`ragQueryWithReasoning`).
+- **Batch embeddings + lazy single-init** vector store for fast cold starts.
 
-## Learn More
+## API
 
-To learn more about Next.js, take a look at the following resources:
+| Endpoint | Method | Body | Description |
+|---|---|---|---|
+| `/api/chat` | POST | `{ message, useReasoning? }` | Full RAG answer with sources + confidence |
+| `/api/search` | POST | `{ query, topK?, threshold? }` | Raw semantic search over the knowledge base |
+| `/api/embeddings` | POST | `{ text }` | Embedding vector for any text |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Getting started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
 
-## Deploy on Vercel
+# add your Gemini API key
+echo "GEMINI_API_KEY=your_key_here" > .env
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm run dev   # http://localhost:3000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Get a key from [Google AI Studio](https://aistudio.google.com/apikey).
+
+## Tech stack
+
+- **Framework:** Next.js 15, React 19, TypeScript, Tailwind CSS v4
+- **AI:** Google Gemini — `gemini-2.0-flash` (chat), `text-embedding-004` (embeddings)
+- **Retrieval:** in-memory vector store with cosine similarity
+
+## Project structure
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── chat/         # RAG pipeline endpoint
+│   │   ├── search/       # semantic search endpoint
+│   │   └── embeddings/   # embedding generation endpoint
+│   ├── page.tsx          # chat UI
+│   └── layout.tsx
+├── components/           # ChatBot, MessageBubble, SearchResults
+├── lib/
+│   ├── gemini.ts         # Gemini client + model config
+│   ├── embeddings.ts     # embedding + cosine similarity
+│   ├── vectorStore.ts    # in-memory vector store
+│   └── ragPipeline.ts    # retrieve → ground → generate
+└── data/
+    └── knowledge-base.json
+```
